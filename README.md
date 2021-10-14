@@ -1,0 +1,2 @@
+# pulselab
+"PulseLab'', is the first comprehensive MATLAB toolbox that covers all the necessary steps for estimating the blood pressure from raw electrocardiogram (ECG) and photoplethysmogram (PPG) signals, using pulse wave velocity (PWV)-based models. The toolbox includes a user-friendly graphical user interface (GUI) offering visualization for step-by-step processing of physiological signals (including various measures and metrics), thereby, helping to obtain the most accurate model for blood pressure estimation.
