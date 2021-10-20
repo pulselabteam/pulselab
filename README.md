@@ -17,8 +17,8 @@ A quick starter guide to run PulseLab after cloning the repository:
 
 7. In the "File Load" panel, confirm that the "Saved Setting" is selected as "Example_Config", and click the "Load" button on the right of it
 
-8. You should be able to see waveforms appearing in plots in the left half of the GUI
+8. You should be able to see waveforms appearing on the left half of the GUI
 
 11. Via the "Individual BP Fitting" tab on the right half of the GUI, a PAT-BP model can be chosen. By clicking on the “Evaluate & Plot” button, the “Regression Metrics” and plots should show up
 
-For more informaiton and advanced applications of PulseLab, watch our [full tutorial](https://www.youtube.com/watch?v=4qaiBhuZwtI) on YouTube
+For more informaiton and advanced applications of PulseLab, watch our [tutorial](https://www.youtube.com/watch?v=4qaiBhuZwtI) on YouTube
