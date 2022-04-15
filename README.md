@@ -25,7 +25,7 @@ For more information and advanced applications of PulseLab, watch our [tutorial]
 
 Visit our website at [PulseLab](https://sites.google.com/view/pulselab/home).
 
-If you find this toolbox to be any useful, please consider citing the following paper:
+If you found this GUI useful, please cite the following:
 
 **W. Wang, P. Mohseni, K. Kilgore and L. Najafizadeh, "PulseLab: An Integrated and Expandable Toolbox for Pulse Wave Velocity-based Blood Pressure Estimation," in *Proc. of Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)*, 2021, pp. 5654-5657.**
 
