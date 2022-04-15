@@ -27,7 +27,7 @@ Visit our website at [PulseLab](https://sites.google.com/view/pulselab/home).
 
 If you find this toolbox to be any useful, please consider citing the following paper:
 
-**W. Wang, P. Mohseni, K. Kilgore and L. Najafizadeh, "PulseLab: An Integrated and Expandable Toolbox for Pulse Wave Velocity-based Blood Pressure Estimation," in Proc. of Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC), 2021, pp. 5654-5657.**
+**W. Wang, P. Mohseni, K. Kilgore and L. Najafizadeh, "PulseLab: An Integrated and Expandable Toolbox for Pulse Wave Velocity-based Blood Pressure Estimation," in *Proc. of Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)*, 2021, pp. 5654-5657.**
 
 ```
 @inproceedings{wang2021pulselab,
