@@ -33,10 +33,9 @@ If you find this toolbox to be any useful, please consider citing the following 
 @inproceedings{wang2021pulselab,
   title={PulseLab: An Integrated and Expandable Toolbox for Pulse Wave Velocity-based Blood Pressure Estimation},
   author={Wang, Weinan and Mohseni, Pedram and Kilgore, Kevin and Najafizadeh, Laleh},
-  booktitle={2021 43rd Annual International Conference of the IEEE Engineering in Medicine \& Biology Society (EMBC)},
+  booktitle={43rd Annual International Conference of the IEEE Engineering in Medicine \& Biology Society (EMBC)},
   pages={5654--5657},
   year={2021},
-  organization={IEEE}
 }
 ````
 # Updates
