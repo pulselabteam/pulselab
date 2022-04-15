@@ -243,11 +243,12 @@ classdef Signal_Set<handle
                  obj.SplitSetting= cvpartition(obj.Extraction(:,1),varargin{1},varargin{2});
             end
         end
-        function [RefSBP,RefDBP,ExtSBP,ExtDBP]=ModelEvaluate(obj)
+        function [RefSBP,RefDBP,ExtSBP,ExtDBP,PAT]=ModelEvaluate(obj)
             RefSBP=[];
             RefDBP=[];
             ExtSBP=[];
             ExtDBP=[];
+            PAT=[];
             Sequence=[];
             if (~isempty(obj.Extraction)&&~isempty(obj.SplitSetting))
                 for i=1: obj.SplitSetting.NumTestSets
@@ -255,6 +256,7 @@ classdef Signal_Set<handle
                     idxTest=find(test(obj.SplitSetting,i));
                     obj.ModelSetting.Fit(obj.Extraction(idxTrain,1),obj.Extraction(idxTrain,2),obj.Extraction(idxTrain,3));
                     [eSBP,eDBP]=obj.ModelSetting.Predict(obj.Extraction(idxTest,1));
+                    PAT=[PAT;obj.Extraction(idxTest,1)];
                     RefSBP=[RefSBP;obj.Extraction(idxTest,2)];
                     RefDBP=[RefDBP;obj.Extraction(idxTest,3)];
                     ExtSBP=[ExtSBP;eSBP];
@@ -266,6 +268,7 @@ classdef Signal_Set<handle
                 RefDBP=RefDBP(sequence_idx);
                 ExtSBP=ExtSBP(sequence_idx);
                 ExtDBP=ExtDBP(sequence_idx);
+                PAT=PAT(sequence_idx);
             end
         end
         function [TrainEXT,TestEXT]=GetSplit(obj)
@@ -298,15 +301,17 @@ classdef Signal_Set<handle
                 end
             end
         end
-        function [RefSBP,RefDBP,ExtSBP,ExtDBP]=TestModel(obj,varargin)
+        function [RefSBP,RefDBP,ExtSBP,ExtDBP,PAT]=TestModel(obj,varargin)
             if nargin>1
                 [ExtSBP,ExtDBP]=obj.ModelSetting.Predict(obj.Extraction(:,1));
+                PAT=obj.Extraction(:,1);
                 RefSBP=obj.Extraction(:,2);
                 RefDBP=obj.Extraction(:,3);
             else
                 if ~isempty(obj.SplitSetting)&&obj.SplitSetting.NumTestSets==1
                     Testidx=test(obj.SplitSetting,1);
                     [ExtSBP,ExtDBP]=obj.ModelSetting.Predict(obj.Extraction(Testidx,1));
+                     PAT=obj.Extraction(Testidx,1);
                     RefSBP=obj.Extraction(Testidx,2);
                     RefDBP=obj.Extraction(Testidx,3);
                 else
@@ -314,6 +319,7 @@ classdef Signal_Set<handle
                     ExtDBP=[];
                     RefSBP=[];
                     RefDBP=[];
+                    PAT=[];
                 end
             end
         end

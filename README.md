@@ -1,5 +1,5 @@
 # Pulselab
-"PulseLab'', is the first comprehensive MATLAB toolbox that covers all the necessary steps for estimating the blood pressure from raw electrocardiogram (ECG) and photoplethysmogram (PPG) signals, using pulse wave velocity (PWV)-based models. The toolbox includes a user-friendly graphical user interface (GUI) offering visualization for step-by-step processing of physiological signals (including various measures and metrics), thereby, helping to obtain the most accurate model for blood pressure estimation.
+"PulseLab" is the first comprehensive MATLAB toolbox that covers all the necessary steps for estimating the blood pressure from raw electrocardiogram (ECG) and photoplethysmogram (PPG) signals, using pulse wave velocity (PWV)-based models. The toolbox includes a user-friendly graphical user interface (GUI) offering visualization for step-by-step processing of physiological signals (including various measures and metrics), thereby, helping to obtain the most accurate model for blood pressure estimation.
 
 A quick starter guide to run PulseLab after cloning the repository:
 
@@ -24,3 +24,9 @@ A quick starter guide to run PulseLab after cloning the repository:
 For more information and advanced applications of PulseLab, watch our [tutorial](https://www.youtube.com/watch?v=4qaiBhuZwtI) on YouTube
 
 Visit our website at [PulseLab](https://sites.google.com/view/pulselab/home)
+
+# Updates
+[4/14/2022] When using the plotting functions on the right hand panel, the GUI now also dumps the Reference SBP and DBP, Estimated SBP and DBP, and PAT values used for generating the GUI plots to the MATLAB workspace. These data are organized as structs or struct arrays
+- Individual_Fitting_Results: The struct containing data used to plot the figures in the "Individual BP Fitting" Tab
+- Overall_Fitting_Results: The struct or struct array containing data used to plot the figures in the "Overall BP Fitting" Tab, organized with respect to each testing subject
+- Specific_Fitting_Results: The struct or struct array containing data used to plot the figures in the "Specific Model Testing" Tab, organized with respect to each testing subject

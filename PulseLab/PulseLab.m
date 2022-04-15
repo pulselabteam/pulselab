@@ -1,24 +1,3 @@
-% PULSELAB - <a comprehensive MATLAB toolbox that covers all the necessary steps 
-% for estimating the blood pressure from raw electrocardiogram (ECG) and 
-% photoplethysmogram (PPG) signals, using pulse wave velocity (PWV)-based
-% models>
-%     ©2021 Rutgers, The State University of New Jersey.  Written by <Weinan Wang>
-%   
-%      This file is part of PULSELAB.
-%  
-%     PULSELAB is free software: you can redistribute it and/or modify
-%     it under the terms of the GNU General Public License as published by
-%     the Free Software Foundation, either version 3 of the License, or
-%     (at your option) any later version.
-%  
-%     PULSELAB is distributed in the hope that it will be useful,
-%     but WITHOUT ANY WARRANTY; without even the implied warranty of
-%     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%     GNU General Public License for more details.
-%  
-%     You should have received a copy of the GNU General Public License
-%     along with PULSELAB.  If not, see <https://www.gnu.org/licenses/>.
-% 
 classdef PulseLab < matlab.apps.AppBase
 
     % Properties that correspond to app components
@@ -666,7 +645,16 @@ classdef PulseLab < matlab.apps.AppBase
             %app.SignalSet.Temp_Extract_PAT_With_HR();
             app.SignalSet.Split('Resubstitution');
             app.SignalSet.SetModel(ModelObject);
-            [RefSBP,RefDBP,EstSBP,EstDBP]=app.SignalSet.ModelEvaluate();
+            [RefSBP,RefDBP,EstSBP,EstDBP,PAT]=app.SignalSet.ModelEvaluate();
+            
+            %Dump to workspace
+            Individual_Fitting_Results.RefSBP=RefSBP;
+            Individual_Fitting_Results.RefDBP=RefDBP;
+            Individual_Fitting_Results.EstSBP=EstSBP;
+            Individual_Fitting_Results.EstDBP=EstDBP;
+            Individual_Fitting_Results.PAT=PAT;
+            assignin('base','Individual_Fitting_Results',Individual_Fitting_Results);
+            
             
             if ~isempty(RefSBP)
                 PATNum=length(RefSBP);
@@ -1010,8 +998,11 @@ classdef PulseLab < matlab.apps.AppBase
                     case 'Regression'
                         Subject.Split('Resubstitution');
                 end
-                [app.OverallEval(i).RefSBP,app.OverallEval(i).RefDBP,app.OverallEval(i).EstSBP,app.OverallEval(i).EstDBP]=Subject.ModelEvaluate();
+                app.OverallEval(i).Subject_Name=SubjectName;
+                [app.OverallEval(i).RefSBP,app.OverallEval(i).RefDBP,app.OverallEval(i).EstSBP,app.OverallEval(i).EstDBP,app.OverallEval(i).PAT]=Subject.ModelEvaluate();
+                assignin('base','Overall_Fitting_Results',app.OverallEval);
             end
+            
         end
         function SubjectEvaluation_Specific(app)
             MergedTrainingSet=Signal_Set();
@@ -1043,9 +1034,11 @@ classdef PulseLab < matlab.apps.AppBase
                     CurrentSubject=SubjectFile.(SubjectField{1});
                     TrainedModelObject=MergedTrainingSet.ModelSetting;
                     CurrentSubject.SetModel(TrainedModelObject);
-                    [app.SpecificEval(i).RefSBP,app.SpecificEval(i).RefDBP,app.SpecificEval(i).EstSBP,app.SpecificEval(i).EstDBP]=CurrentSubject.TestModel('All');
+                    app.SpecificEval(i).Subject_Name=Test_List{i};
+                    [app.SpecificEval(i).RefSBP,app.SpecificEval(i).RefDBP,app.SpecificEval(i).EstSBP,app.SpecificEval(i).EstDBP,app.SpecificEval(i).PAT]=CurrentSubject.TestModel('All');
                     NumTest=NumTest+length(app.SpecificEval(i).RefSBP);
                 end
+                
             elseif strcmp(app.ModeDropDown_2.Value,'Split')
                 All_Subjects_List=union(app.TrainListBox.Items,app.TestListBox.Items,'stable');
                 All_Subjects_List=app.StringSort(All_Subjects_List);
@@ -1077,14 +1070,15 @@ classdef PulseLab < matlab.apps.AppBase
                     CurrentSubject=Subject(i);
                     TrainedModelObject=MergedTrainingSet.ModelSetting;
                     CurrentSubject.SetModel(TrainedModelObject);
-                    [app.SpecificEval(k).RefSBP,app.SpecificEval(k).RefDBP,app.SpecificEval(k).EstSBP,app.SpecificEval(k).EstDBP]=CurrentSubject.TestModel();
+                    app.SpecificEval(k).Subject_Name=All_Subjects_List{i};
+                    [app.SpecificEval(k).RefSBP,app.SpecificEval(k).RefDBP,app.SpecificEval(k).EstSBP,app.SpecificEval(k).EstDBP,app.SpecificEval(k).PAT]=CurrentSubject.TestModel();
                     NumTest=NumTest+length(app.SpecificEval(k).RefSBP);
                     k=k+1;
                 end
             end
             app.TrainPATSize.Value=length(AllTrainExtraction(:,1));
             app.TestPATSize.Value=NumTest;
-            
+            assignin('base','Specific_Fitting_Results',app.SpecificEval);
         end
         function RefreshPeakSetting_Subject(app)
             %Sync the selections with current status of saved subjects if
