@@ -21,10 +21,24 @@ A quick starter guide to run PulseLab after cloning the repository:
 
 11. Via the "Individual BP Fitting" tab on the right half of the GUI, a PAT-BP model can be chosen. By clicking on the “Evaluate & Plot” button, the “Regression Metrics” and plots should show up
 
-For more information and advanced applications of PulseLab, watch our [tutorial](https://www.youtube.com/watch?v=4qaiBhuZwtI) on YouTube
+For more information and advanced applications of PulseLab, watch our [tutorial](https://www.youtube.com/watch?v=4qaiBhuZwtI) on YouTube.
 
-Visit our website at [PulseLab](https://sites.google.com/view/pulselab/home)
+Visit our website at [PulseLab](https://sites.google.com/view/pulselab/home).
 
+If you find this toolbox to be any useful, please consider citing the following paper:
+
+**PulseLab: An Integrated and Expandable Toolbox for Pulse Wave Velocity-based Blood Pressure Estimation**
+
+```
+@inproceedings{wang2021pulselab,
+  title={PulseLab: An Integrated and Expandable Toolbox for Pulse Wave Velocity-based Blood Pressure Estimation},
+  author={Wang, Weinan and Mohseni, Pedram and Kilgore, Kevin and Najafizadeh, Laleh},
+  booktitle={2021 43rd Annual International Conference of the IEEE Engineering in Medicine \& Biology Society (EMBC)},
+  pages={5654--5657},
+  year={2021},
+  organization={IEEE}
+}
+````
 # Updates
 [4/14/2022] When using the plotting functions on the right hand panel, the GUI now also dumps the Reference SBP and DBP, Estimated SBP and DBP, and PAT values used for generating the GUI plots to the MATLAB workspace. These data are organized as structs or struct arrays
 - Individual_Fitting_Results: The struct containing data used to plot the figures in the "Individual BP Fitting" Tab
