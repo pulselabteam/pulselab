@@ -1,4 +1,5 @@
 # Pulselab
+![image](https://github.com/pulselabteam/pulselab/blob/main/PulseLab.gif)
 "PulseLab" is the first comprehensive MATLAB toolbox that covers all the necessary steps for estimating the blood pressure from raw electrocardiogram (ECG) and photoplethysmogram (PPG) signals, using pulse wave velocity (PWV)-based models. The toolbox includes a user-friendly graphical user interface (GUI) offering visualization for step-by-step processing of physiological signals (including various measures and metrics), thereby, helping to obtain the most accurate model for blood pressure estimation.
 
 A quick starter guide to run PulseLab after cloning the repository:
@@ -21,9 +22,9 @@ A quick starter guide to run PulseLab after cloning the repository:
 
 11. Via the "Individual BP Fitting" tab on the right half of the GUI, a PAT-BP model can be chosen. By clicking on the “Evaluate & Plot” button, the “Regression Metrics” and plots should show up
 
-For more information and advanced applications of PulseLab, watch our [tutorial](https://www.youtube.com/watch?v=4qaiBhuZwtI) on YouTube.
+For more information and advanced applications of PulseLab, watch our [Tutorial](https://www.youtube.com/watch?v=4qaiBhuZwtI) on YouTube.
 
-Visit our website at [PulseLab](https://sites.google.com/view/pulselab/home).
+Visit our [Website](https://sites.google.com/view/pulselab/home) and [Blog](https://weinanwang-ru.github.io/)
 
 If you found this GUI useful, please cite the following:
 
